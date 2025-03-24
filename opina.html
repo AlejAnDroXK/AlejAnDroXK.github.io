@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Factura</title>
+    <title>Opina</title>
     <!-- iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- tipo letras -->
@@ -50,6 +50,12 @@
             font-size: 60px;
             font-family: "Sedgwick Ave", cursive;
         }
+        .nav-links ul li.Inicio a {
+            color: rgb(253, 253, 253);
+            font-size: 16px;
+            font-family: "Oswald", sans-serif;
+            padding-right: 30px;
+        }
         .nav-links ul li::after {
             content: "";
             width: 0;
@@ -65,57 +71,41 @@
         nav .fa {
             display: none;
         }
-        /* Factura */
+        /*Opina*/
         .container {
-            max-width: 800px;
+            background-color: rgb(0, 0, 0);
             margin: 50px auto;
             padding: 25px;
-            background-color: #000000;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: #fff;
-        }
-        table {
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
             width: 100%;
-            margin-bottom: 20px;
-            border-collapse: collapse;
-        }
-        th {
-            padding: 10px;
             text-align: center;
-            border: 1px solid #ccc;
-            font-size: 20px;
         }
-        td{
-            padding: 10px;
+        h1 {
             text-align: center;
-            border: 1px solid #ccc;
-            font-family: "Big Shoulders", sans-serif;
-            font-size: 20px;
-        }
-        h2{
-            padding-bottom: 20px;
-            font-size: 30px;
             color: #470077;
+            margin-bottom: 20px;
         }
-        p{
-            padding-bottom: 20px;
-            font-size: 24px;
+        label {
+            display: block;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: bold;
         }
-        /* Post pago */
-        #mensajeFacturaExitosa {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        input, textarea {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            text-align: center;
-            padding-top: 20vh;
-            font-size: 2em;
-            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            border-color: #470077;
         }
         button {
             padding: 8px 16px;
@@ -126,6 +116,7 @@
             color: black;
             font-family: "Oswald", sans-serif;
             font-size: 20px;
+
         }
         button:hover {
             background-color: #470077;
@@ -186,7 +177,7 @@
         }
         .social a:hover {
             color: #470077;
-        }
+        }  
         /* Para vista cel */
         @media (max-width: 700px) {
             /*Cabecera*/
@@ -217,33 +208,8 @@
             .container .th{
                 text-align: center;
             }
-            /* Factura */
-            .container {
-                max-width: 800px;
-                margin: 20px auto;
-                padding: 20px;
-            }
-            #lista-productos {
-                width: 100%;
-                border-collapse: collapse;
-                margin-bottom: 20px;
-            }
-            #lista-productos th,
-            #lista-productos td {
-                padding: 10px;
-                border-bottom: 1px solid #ccc;
-                text-align: center;
-            }
-            #total-container {
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            #total {
-                font-size: 24px;
-                font-weight: bold;
-            }
         }
-    </style>
+  </style>
 </head>
 <body>
     <!-- Header -->
@@ -252,34 +218,20 @@
         <div class="nav-links" id="navLinks">
         <i class="fa fa-times" onclick="hideMenu()"></i>
             <ul>
-                <li><a href="">Factura</a></li>
+                <li class="Inicio"><a href="index.html">Inicio</a></li>
+                <li><a href="">Opina</a></li>
             </ul>    
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </nav>
 
-    <!-- Tabla de productos -->
+    <!-- Opina -->
     <div class="container">
-        <form id="factura-form">
-            <h2>Productos Seleccionados</h2>
-            <table id="lista-productos">
-                <thead>
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <tbody id="productos-seleccionados"></tbody>
-            </table>
-            <div id="total-container">
-                <h2>Total a Pagar:</h2>
-                <p id="total">0</p>
-            </div>
-            <button type="submit">Comprar</button>
-            <div id="mensajeFacturaExitosa" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); text-align: center; padding-top: 20vh; font-size: 2em; color: white;">
-                ¡Factura Exitosa!
-            </div>
+        <h1>Opinion</h1>
+        <form action="mailto:rodrigo.taipicana@udla.edu.ec" method="post" enctype="text/plain">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            <button type="submit">Enviar</button>
         </form>
     </div>
 
@@ -334,79 +286,23 @@
         </div>
     </footer>
 
-    <script>
-        /* Java,  ocultar menu y dejar de hacerlo*/
-        var navLinks=document.getElementById("navLinks");
-        function showMenu(){
-            navLinks.style.right="0";
-        }
-        function hideMenu(){
-            navLinks.style.right="-200px";
-        }
-        /* Anotar en la tabla los productos*/
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const productosSeleccionados = document.getElementById('productos-seleccionados');
-            let total = 0;
-
-            params.forEach((value, key) => {
-                if (key.startsWith('producto')) {
-                    const producto = JSON.parse(value);
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>
-                            <img src="${producto.imagen}" width="100">
-                        </td>
-                        <td>${producto.titulo}</td>
-                        <td>$${producto.precio}</td>
-                    `;
-                    total += producto.precio;
-                    productosSeleccionados.appendChild(row);
-                }
-            });
-            document.getElementById('total').textContent = `$${total}`;
-        });
-
-        /* Si la factura se ejecuto bien o no*/
-        document.getElementById('factura-form').addEventListener('submit', function(event) {
+  <script>
+    /* Java,  ocultar menu y dejar de hacerlo*/
+    var navLinks=document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right="0";
+    }
+    function hideMenu(){
+        navLinks.style.right="-200px";
+    }
+    /* Boton para enviar la opinion*/
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        const mensajeFacturaExitosa = document.getElementById('mensajeFacturaExitosa');
-        mensajeFacturaExitosa.style.display = 'block';
-
-        // Capturar los productos del carrito
-        const filas = document.querySelectorAll('#productos-seleccionados tr');
-        let mensaje = ' Pedido: %0A';
-
-        filas.forEach(fila => {
-            const titulo = fila.children[1].textContent; // Nombre del producto
-            const precio = fila.children[2].textContent; // Precio del producto
-            mensaje += `${titulo} - ${precio} %0A`;
-        });
-
-        const total = document.getElementById('total').textContent;
-        mensaje += `----------------------------------------%0A Total: ${total} %0A`;
-        mensaje += `Nombre: %0A`;
-        mensaje += `Fecha de entrega: %0A`;
-        mensaje += `Lugar de entrega: %0A`;
-
-        // Número de WhatsApp (código de país + número)
-        const numeroWhatsApp = '+593987256308'; // Reemplázalo con tu número
-
-        // Enlace de WhatsApp con el mensaje
-        const enlace = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
-
-        // Redirigir a WhatsApp
-        window.open(enlace, '_blank');
-
-        // Redirigir a pag principal
-        setTimeout(function() {
-                localStorage.removeItem('carrito');
-                window.location.href = 'index.html';
-            }, 2000);
-        });
-        
-    </script>
+    });
+    setTimeout(function() {
+            window.location.href = 'index.html';
+    }, 2000);
     
-    
+  </script>
 </body>
 </html>
