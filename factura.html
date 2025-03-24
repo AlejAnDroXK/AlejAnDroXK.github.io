@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <!-- iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- tipo letras -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        }
+        body {
+            font-family: 'Oswald', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('imagenes_pagina/fondo_pagina.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        /*Cabecera*/
+        nav {
+            display: flex;
+            padding: 2% 6%;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000000;
+        }
+        nav img {
+            width: 150px;
+        }
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+        .nav-links ul {
+            list-style: none;
+        }
+        .nav-links ul li {
+            display: inline-block;
+            padding: 8px 12px;
+        }
+        .nav-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 60px;
+            font-family: "Sedgwick Ave", cursive;
+        }
+        .nav-links ul li::after {
+            content: "";
+            width: 0;
+            height: 2px;
+            background: #470077;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+        nav .fa {
+            display: none;
+        }
+        /* Factura */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 25px;
+            background-color: #000000;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        th {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-size: 20px;
+        }
+        td{
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-family: "Big Shoulders", sans-serif;
+            font-size: 20px;
+        }
+        h2{
+            padding-bottom: 20px;
+            font-size: 30px;
+            color: #470077;
+        }
+        p{
+            padding-bottom: 20px;
+            font-size: 24px;
+        }
+        /* Post pago */
+        #mensajeFacturaExitosa {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding-top: 20vh;
+            font-size: 2em;
+            color: white;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #ffffff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            color: black;
+            font-family: "Oswald", sans-serif;
+            font-size: 20px;
+        }
+        button:hover {
+            background-color: #470077;
+        }
+        /*footer*/
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            width: 80%;
+            background-position: center;
+            border-radius: 10px;
+            text-align: center;
+            background-size: cover;
+            margin: 0 auto;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .link {
+            margin: 20px;
+        }
+        .link h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #470077;
+        }
+        .link ul {
+            list-style: none;
+            padding: 0;
+        }
+        .link ul li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-family: "Big Shoulders", sans-serif;
+        }
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social {
+            width: 40px;
+            height: 40px;
+            background-color: #555;
+            margin: 0 5px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .social a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .social a:hover {
+            color: #470077;
+        }
+        /* Para vista cel */
+        @media (max-width: 700px) {
+            /*Cabecera*/
+            .nav-links {
+                position: absolute;
+                background: #2b2a2a;
+                height: 100vh;
+                width: 200px;
+                top: 0;
+                right: -200px;
+                text-align: left;
+                transition: 0.5s;
+                z-index: 2;
+            }
+            .nav-links ul {
+                padding: 30px;
+            }
+            nav .fa {
+                display: block;
+                color: white;
+                font-size: 22px;
+                cursor: pointer;
+                margin: 10px;
+            }
+            #navLinks.active {
+                right: 0;
+            }
+            .container .th{
+                text-align: center;
+            }
+            /* Factura */
+            .container {
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 20px;
+            }
+            #lista-productos {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+            #lista-productos th,
+            #lista-productos td {
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+                text-align: center;
+            }
+            #total-container {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            #total {
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav>
+        <img src="imagenes_pagina/aliq.png">
+        <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="">Factura</a></li>
+            </ul>    
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <!-- Tabla de productos -->
+    <div class="container">
+        <form id="factura-form">
+            <h2>Productos Seleccionados</h2>
+            <table id="lista-productos">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="productos-seleccionados"></tbody>
+            </table>
+            <div id="total-container">
+                <h2>Total a Pagar:</h2>
+                <p id="total">0</p>
+            </div>
+            <button type="submit">Comprar</button>
+            <div id="mensajeFacturaExitosa" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); text-align: center; padding-top: 20vh; font-size: 2em; color: white;">
+                ¡Factura Exitosa!
+            </div>
+        </form>
+    </div>
+
+    <!-- Contactanos -->
+    <footer id="footer" class="footer">
+        <div class="footer-content">
+            <div class="link">
+                <h4>DIRECCION</h4>
+                <ul>
+                    <li>532 Nikko Stream Apt. 624</li>
+                    <li>532 Nikko Stream Apt. 624</li>
+                    <li>532 Nikko Stream Apt. 624</li>
+                </ul>  
+            </div>  
+            <div class="link">
+                <h4>HORARIO</h4>
+                <ul>
+                    <li>Lunes a Viernes</li>
+                    <li>6:00am - 18:00pm</li>
+                    <li>Lunes a Viernes</li>
+                    <li>6:00am - 18:00pm</li>
+                </ul>    
+            </div>
+            <div class="link">
+                <h4>TELEFONO</h4>
+                <ul>
+                    <li>0994776335</li>
+                    <li>0994776335</li>
+                    <li>0994776335</li>  
+                </ul>    
+            </div>
+            <div class="link">
+                <h4>REDES SOCIALES</h4>
+                <div class="socials">
+                <a href="https://es-la.facebook.com/">
+                    <div class="social">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                </a>
+                <a href="https://twitter.com/">
+                    <div class="social">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/">
+                    <div class="social">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* Java,  ocultar menu y dejar de hacerlo*/
+        var navLinks=document.getElementById("navLinks");
+        function showMenu(){
+            navLinks.style.right="0";
+        }
+        function hideMenu(){
+            navLinks.style.right="-200px";
+        }
+        /* Anotar en la tabla los productos*/
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productosSeleccionados = document.getElementById('productos-seleccionados');
+            let total = 0;
+
+            params.forEach((value, key) => {
+                if (key.startsWith('producto')) {
+                    const producto = JSON.parse(value);
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>
+                            <img src="${producto.imagen}" width="100">
+                        </td>
+                        <td>${producto.titulo}</td>
+                        <td>$${producto.precio}</td>
+                    `;
+                    total += producto.precio;
+                    productosSeleccionados.appendChild(row);
+                }
+            });
+            document.getElementById('total').textContent = `$${total}`;
+        });
+
+        /* Si la factura se ejecuto bien o no*/
+        document.getElementById('factura-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const mensajeFacturaExitosa = document.getElementById('mensajeFacturaExitosa');
+        mensajeFacturaExitosa.style.display = 'block';
+
+        // Capturar los productos del carrito
+        const filas = document.querySelectorAll('#productos-seleccionados tr');
+        let mensaje = ' Pedido: %0A';
+
+        filas.forEach(fila => {
+            const titulo = fila.children[1].textContent; // Nombre del producto
+            const precio = fila.children[2].textContent; // Precio del producto
+            mensaje += `${titulo} - ${precio} %0A`;
+        });
+
+        const total = document.getElementById('total').textContent;
+        mensaje += `----------------------------------------%0A Total: ${total} %0A`;
+        mensaje += `Nombre: %0A`;
+        mensaje += `Fecha de entrega: %0A`;
+        mensaje += `Lugar de entrega: %0A`;
+
+        // Número de WhatsApp (código de país + número)
+        const numeroWhatsApp = '+593994776365'; // Reemplázalo con tu número
+
+        // Enlace de WhatsApp con el mensaje
+        const enlace = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+
+        // Redirigir a WhatsApp
+        window.open(enlace, '_blank');
+
+        // Redirigir a pag principal
+        setTimeout(function() {
+                localStorage.removeItem('carrito');
+                window.location.href = 'aliquor.html';
+            }, 2000);
+        });
+        
+    </script>
+    
+    
+</body>
+</html>
