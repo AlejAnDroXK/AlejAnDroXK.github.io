@@ -130,6 +130,7 @@
             background-color: #4e485076;
             padding: 20px;
             min-width: 400px;
+            max-height: 1000px;
         }
         table {
             width: 100%;
@@ -428,8 +429,26 @@
                 padding: 10px;
             }
             /*Carrito*/
+            .submenu {
+                position: relative;
+                overflow: visible;
+            }
+            .submenu #carrito {
+                position: absolute;
+                right: 0;
+                top: 100%;
+                backdrop-filter: blur(10px);
+                z-index: 1;
+                background-color: #4e485076;
+                padding: 20px;
+                min-width: 400px;
+                max-height: 15px; /* se ve un poquito */
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+            }
             .submenu:hover #carrito {
-                max-width: 300px;
+                max-height: 1000px; /* lo suficientemente alto para mostrar el contenido */
+                padding: 20px;
             }
             /*Carrusel*/
             .swiper-slide {
