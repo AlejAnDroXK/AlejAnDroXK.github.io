@@ -871,6 +871,19 @@
             localStorage.removeItem('carrito');
         }
         document.getElementById('vaciar-carrito').addEventListener('click', vaciarCarrito);
+
+
+
+        const submenu = document.querySelector('.submenu');
+    const carrito = document.querySelector('#carrito');
+
+    submenu.addEventListener('mouseenter', () => {
+        carrito.style.display = 'block';
+    });
+
+    submenu.addEventListener('mouseleave', () => {
+        carrito.style.display = 'none';
+    });
     </script>
        
 </body>
