@@ -65,6 +65,40 @@
         nav .fa {
             display: none;
         }
+        /* Instrucciones */
+        .instrucciones {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #f7f7f7;
+            border: 2px solid #470077;
+            border-radius: 12px;
+            padding: 30px;
+            font-family: "Oswald", sans-serif;
+            color: #2c2c2c;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .instrucciones h2 {
+            text-align: center;
+            color: #470077;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .instrucciones ol {
+            padding-left: 20px;
+            font-size: 18px;
+        }
+
+        .instrucciones li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .instrucciones li::marker {
+            color: #470077;
+            font-weight: bold;
+        }
         /* Factura */
         .container {
             max-width: 800px;
@@ -257,6 +291,23 @@
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </nav>
+
+    <!-- instrucciones -->
+    <div class="instrucciones">
+        <h2>¿Cómo comprar?</h2>
+        <ol>
+            <li>Haz clic en el botón <strong>"Comprar"</strong>.</li>
+            <li>Serás redirigido automáticamente al chat de WhatsApp.</li>
+            <li>Envía un mensaje con la siguiente información:
+                <ul>
+                    <li>Nombre del comprador.</li>
+                    <li>Dirección o lugar de entrega del producto.</li>
+                    <li>Fecha en la que deseas recibir tu pedido.</li>
+                </ul>
+            </li>
+            <li>Una vez enviado el mensaje al número indicado, ¡tu compra estará confirmada!</li>
+        </ol>
+    </div>
 
     <!-- Tabla de productos -->
     <div class="container">
