@@ -409,6 +409,28 @@
         .social a:hover {
             color: #470077;
         }  
+
+
+        .notificacion {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(71, 0, 119, 0.85);
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #470077aa;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 9999;
+    }
+
+    .notificacion.mostrar {
+      opacity: 1;
+      transform: translateY(0);
+    }
         /* Para vista cel */
         @media(max-width:700px) {
             /*Header*/
@@ -583,7 +605,10 @@
                             <img src="imagenes_pagina/Promociones/cifrut-y-puro.png" alt="">
                         </div>
                     </div>
-                    <a href="#" class="btn-1">Comprar</a>
+                    <a href="#" class="btn-1" onclick="mostrarNotificacion()">Comprar</a>
+                    <div class="notificacion" id="notificacion">
+                        Producto añadido al carrito 🛒
+                      </div>
                 </div>
 
                 <!-- 4º Producto -->
@@ -874,6 +899,17 @@
             localStorage.removeItem('carrito');
         }
         document.getElementById('vaciar-carrito').addEventListener('click', vaciarCarrito);
+
+
+        function mostrarNotificacion() {
+        const noti = document.getElementById('notificacion');
+        noti.classList.add('mostrar');
+
+        // Ocultar la notificación después de 3 segundos
+        setTimeout(() => {
+            noti.classList.remove('mostrar');
+        }, 3000);
+        }
     </script>
        
 </body>
