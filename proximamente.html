@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Neón</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            font-family: "Oswald", sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /*Cabecera*/
+        nav {
+            display: flex;
+            padding: 2% 6%;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000000;
+        }
+        nav img {
+            width: 150px;
+        }
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+        .nav-links ul {
+            list-style: none;
+        }
+        .nav-links ul li {
+            display: inline-block;
+            padding: 8px 12px;
+        }
+        .nav-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 60px;
+            font-family: "Sedgwick Ave", cursive;
+        }
+        .nav-links ul li.Inicio a {
+            color: rgb(253, 253, 253);
+            font-size: 16px;
+            font-family: "Oswald", sans-serif;
+            padding-right: 30px;
+        }
+        .nav-links ul li::after {
+            content: "";
+            width: 0;
+            height: 2px;
+            background: #470077;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+        nav .fa {
+            display: none;
+        }
+        /*Caja de neon*/
+        .neon-box {
+            padding: 40px;
+            border: 2px solid #470077;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 0 20px #470077, 0 0 40px #47007755;
+            animation: spin 15s linear infinite;
+        }
+
+        .neon-box h1 {
+            color: #ffffff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #470077;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .neon-box p {
+            color: #dddddd;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        /*footer*/
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            width: 80%;
+            background-position: center;
+            border-radius: 10px;
+            text-align: center;
+            background-size: cover;
+            margin: 0 auto;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .link {
+            margin: 20px;
+        }
+        .link h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #470077;
+        }
+        .link ul {
+            list-style: none;
+            padding: 0;
+        }
+        .link ul li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-family: "Big Shoulders", sans-serif;
+        }
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social {
+            width: 40px;
+            height: 40px;
+            background-color: #555;
+            margin: 0 5px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .social a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .social a:hover {
+            color: #470077;
+        }  
+        @keyframes spin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+        @media (max-width: 700px) {
+            /*Cabecera*/
+            .nav-links {
+                position: absolute;
+                background: #2b2a2a;
+                height: 100vh;
+                width: 200px;
+                top: 0;
+                right: -200px;
+                text-align: left;
+                transition: 0.5s;
+                z-index: 2;
+            }
+            .nav-links ul {
+                padding: 30px;
+            }
+            nav .fa {
+                display: block;
+                color: white;
+                font-size: 22px;
+                cursor: pointer;
+                margin: 10px;
+            }
+            #navLinks.active {
+                right: 0;
+            }
+            /*Proximamente*/
+            .neon-box {
+                padding: 25px;
+            }
+
+            .neon-box h1 {
+                font-size: 28px;
+            }
+
+            .neon-box p {
+                font-size: 16px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav>
+        <img src="imagenes_pagina/aliq.png">
+        <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li class="Inicio"><a href="index.html">Inicio</a></li>
+                <li><a href="#">Opina</a></li>
+            </ul>    
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <div class="neon-box">
+        <h1>¡Bienvenido!</h1>
+        <p>Próximamente algo grande llegará aquí. <br>
+        Mantente atento y prepárate para lo mejor.</p>
+    </div>
+
+    <!-- Contactanos -->
+    <footer id="footer" class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h4>DIRECCIÓN</h4>
+                <ul>
+                    <li>Granados plaza</li>
+                    <li>Redondel del ciclista</li>
+                </ul>
+            </div>
+            <div class="link">
+                <h4>HORARIO</h4>
+                <ul>
+                    <li>Lunes a Viernes</li>
+                    <li>12:30 - 24:00</li>
+                    <li>Sábado y Domingo</li>
+                    <li>7:00 - 24:00</li>
+                </ul>
+            </div>
+            <div class="link">
+                <h4>TELÉFONO</h4>
+                <ul>
+                    <li>0987256308</li>
+                    <li>0994776365</li>
+                </ul>
+            </div>
+            <div class="link">
+                <h4>REDES SOCIALES</h4>
+                <div class="socials">
+                    <a href="https://es-la.facebook.com/">
+                        <div class="social">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                    </a>
+                    <a href="https://twitter.com/">
+                        <div class="social">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <div class="social">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* Java,  ocultar menu y dejar de hacerlo*/
+        var navLinks=document.getElementById("navLinks");
+        function showMenu(){
+            navLinks.style.right="0";
+        }
+        function hideMenu(){
+            navLinks.style.right="-200px";
+        }
+    </script>
+</body>
+</html>
