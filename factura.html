@@ -319,6 +319,7 @@
                         <th>Imagen</th>
                         <th>Producto</th>
                         <th>Precio</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody id="productos-seleccionados"></tbody>
@@ -414,6 +415,17 @@
                 }
             });
             document.getElementById('total').textContent = `$${total}`;
+
+            productosSeleccionados.addEventListener('click', function (e) {
+                if (e.target.classList.contains('eliminar-producto')) {
+                    const fila = e.target.closest('tr');
+                    const precioTexto = fila.querySelector('.precio').textContent;
+                    const precio = parseFloat(precioTexto.replace('$', ''));
+                    total -= precio;
+                    document.getElementById('total').textContent = `$${total}`;
+                    fila.remove();
+                }
+            });
         });
 
         /* Si la factura se ejecuto bien o no*/
