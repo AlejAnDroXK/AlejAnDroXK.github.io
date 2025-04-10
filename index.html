@@ -197,16 +197,33 @@
         }
         #carrito tbody {
             display: block;
-            max-height: 200px; /* puedes ajustar este valor como quieras */
+            max-height: 300px; /* puedes ajustar este valor como quieras */
             overflow-y: auto;
         }
 
-        /* Para que las columnas no se deformen */
         #carrito thead,
         #carrito tbody tr {
             display: table;
             width: 100%;
             table-layout: fixed;
+        }
+
+        #carrito tbody::-webkit-scrollbar {
+            width: 4px; /* delgadez de la línea */
+        }
+
+        #carrito tbody::-webkit-scrollbar-track {
+            background: transparent; /* fondo del scroll, invisible */
+        }
+
+        #carrito tbody::-webkit-scrollbar-thumb {
+            background-color: #470077; /* el color morado */
+            border-radius: 10px;
+        }
+
+        #carrito tbody {
+            scrollbar-width: thin; /* para Firefox */
+            scrollbar-color: #470077 transparent;
         }
         /* Carrusel */
         .Carrusel {
