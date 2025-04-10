@@ -195,6 +195,19 @@
         .btn-2:hover{
             background-color: #470077;
         }
+        #carrito tbody {
+            display: block;
+            max-height: 200px; /* puedes ajustar este valor como quieras */
+            overflow-y: auto;
+        }
+
+        /* Para que las columnas no se deformen */
+        #carrito thead,
+        #carrito tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
         /* Carrusel */
         .Carrusel {
             width: 80%;
