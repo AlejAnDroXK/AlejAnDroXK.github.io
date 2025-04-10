@@ -255,6 +255,27 @@
         .social a:hover {
             color: #470077;
         }  
+        /*Notificacion*/
+        .notificacion {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(71, 0, 119, 0.85);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #470077aa;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 9999;
+        }
+
+        .notificacion.mostrar {
+            opacity: 1;
+            transform: translateY(0);
+        }
         /* Para vista cel */
         @media(max-width:700px){
             /*Header*/
@@ -358,7 +379,7 @@
                     <h3>Jelly Switch 8U</h3>
                     <p>50 Gramos c/u</p>
                     <p class="precio">2.00</p>
-                    <a href="#" class="agregar-carrito btn-2" data-id="1">Agregar al carrito</a>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1" onclick="mostrarNotificacion()">Agregar al carrito</a>
                 </div>
             </div>
             <div class="product">
@@ -367,7 +388,7 @@
                     <h3>Jelly Switch 20U</h3>
                     <p>15 Gramos c/u</p>
                     <p class="precio">2.25</p>
-                    <a href="#" class="agregar-carrito btn-2" data-id="1">Agregar al carrito</a>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1" onclick="mostrarNotificacion()">Agregar al carrito</a>
                 </div>
             </div>
             <div class="product">
@@ -376,7 +397,7 @@
                     <h3>Jelly Switch 40U</h3>
                     <p>15 Gramos c/u</p>
                     <p class="precio">3.75</p>
-                    <a href="#" class="agregar-carrito btn-2" data-id="1">Agregar al carrito</a>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1" onclick="mostrarNotificacion()">Agregar al carrito</a>
                 </div>
             </div>
             <div class="product">
@@ -385,7 +406,7 @@
                     <h3>Zhumir seco</h3>
                     <p>700 ml</p>
                     <p class="precio">4.25</p>
-                    <a href="#" class="agregar-carrito btn-2" data-id="1">Agregar al carrito</a>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1" onclick="mostrarNotificacion()">Agregar al carrito</a>
                 </div>
             </div>
             <div class="product">
@@ -394,7 +415,7 @@
                     <h3>Old Times caminera</h3>
                     <p>125 ml</p>
                     <p class="precio">2.50</p>
-                    <a href="#" class="agregar-carrito btn-2" data-id="1">Agregar al carrito</a>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1" onclick="mostrarNotificacion()">Agregar al carrito</a>
                 </div>
             </div>
         </div>
@@ -572,6 +593,15 @@
             productos.forEach(insertarCarrito);
         }
         
+        function mostrarNotificacion() {
+        const noti = document.getElementById('notificacion');
+        noti.classList.add('mostrar');
+
+        // Ocultar la notificación después de 3 segundos
+        setTimeout(() => {
+            noti.classList.remove('mostrar');
+        }, 3000);
+        }
     </script>
 </body>
 </html>
