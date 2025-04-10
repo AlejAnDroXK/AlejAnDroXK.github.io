@@ -329,14 +329,15 @@
             }
             /*Notificacion*/
             .notificacion {
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                max-width: unset;
-                font-size: 15px;
-                padding: 12px 15px;
-                border-radius: 8px;
-                text-align: center;
+                right: 50%;
+                transform: translate(50%, -20px); /* centrar horizontalmente y mantener arriba */
+                width: 90%;
+                max-width: 300px;
+                font-size: 14px;
+            }
+
+            .notificacion.mostrar {
+                transform: translate(50%, 0);
             }
         }
     </style>
@@ -433,11 +434,11 @@
                 </div>
             </div>
             <div class="product">
+                <div class="notificacion" id="notificacion">
+                    Producto añadido al carrito 🛒
+                </div>
                 <img src="imagenes_pagina/Alcohol/Caminera-rojo-old-times-125m.png" alt="">
                 <div class="product-txt">
-                    <div class="notificacion" id="notificacion">
-                        Producto añadido al carrito 🛒
-                    </div>
                     <h3>Old Times caminera</h3>
                     <p>125 ml</p>
                     <p class="precio">2.50</p>
