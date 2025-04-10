@@ -137,6 +137,11 @@
             padding-bottom: 20px;
             font-size: 24px;
         }
+        .eliminar-producto:hover {
+            color: #ffffff;
+            transform: scale(1.2);
+            transition: 0.3s ease;
+        }
         /* Post pago */
         #mensajeFacturaExitosa {
             display: none;
@@ -404,18 +409,19 @@
                     const producto = JSON.parse(value);
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>
-                            <img src="${producto.imagen}" width="100">
-                        </td>
+                        <td><img src="${producto.imagen}" width="100"></td>
                         <td>${producto.titulo}</td>
-                        <td>$${producto.precio}</td>
+                        <td class="precio">$${producto.precio}</td>
+                        <td><span class="eliminar-producto" style="cursor:pointer; font-weight: bold; color: #ff4444;">❌</span></td>
                     `;
                     total += producto.precio;
                     productosSeleccionados.appendChild(row);
                 }
             });
+
             document.getElementById('total').textContent = `$${total}`;
 
+            // Evento para eliminar producto
             productosSeleccionados.addEventListener('click', function (e) {
                 if (e.target.classList.contains('eliminar-producto')) {
                     const fila = e.target.closest('tr');
