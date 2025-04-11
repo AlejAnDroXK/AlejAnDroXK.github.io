@@ -22,6 +22,31 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        /*Regresar*/
+        #btn-volver {
+            position: fixed;
+            top: 200px;
+            left: 15px;
+            width: 50px;
+            height: 30px;
+            background-color: #470077;
+            border-radius: 10px;
+            z-index: 101;
+            cursor: pointer;
+            box-shadow: 0 0 10px #470077;
+            color: white;
+            font-size: 30px;
+            text-align: center;
+            line-height: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        #btn-volver:hover {
+            background-color: #290144;
+            box-shadow: 0 0 15px #6a1b9a;
+        }
         /*Cabecera*/
         nav {
             display: flex;
@@ -31,7 +56,8 @@
             background-color: #000000;
         }
         nav img {
-            width: 150px;
+            width: 100px;
+            height: 100px;
         }
         .nav-links {
             flex: 1;
@@ -221,6 +247,8 @@
   </style>
 </head>
 <body>
+    <!-- Regresar -->
+    <a href="index.html" id="btn-volver" title="Regresar a inicio">⟵</a>
     <!-- Header -->
     <nav>
         <img src="imagenes_pagina/aliq.png">
